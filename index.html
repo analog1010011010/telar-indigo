@@ -1,23 +1,869 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none; color: #20242d; -webkit-text-stroke: 0px #20242d}
-    span.s2 {font-kerning: none; color: #5b6274; -webkit-text-stroke: 0px #5b6274}
-    span.s3 {font-kerning: none}
-    span.s4 {font-kerning: none; color: #a70014; -webkit-text-stroke: 0px #a70014}
-    span.s5 {font-kerning: none; color: #ad0018; -webkit-text-stroke: 0px #ad0018}
-    span.s6 {font-kerning: none; color: #0f7001; -webkit-text-stroke: 0px #0f7001}
-    span.s7 {font-kerning: none; color: #0e6e6d; -webkit-text-stroke: 0px #0e6e6d}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telar Índigo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --indigo: #6F00FF;
+      --indigo-dark: #5500cc;
+      --cream: #f2f1e9;
+      --cream-dark: #e8e6d9;
+      --ink: #1a1a2e;
+      --ink-light: #4a4a5a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background-color: var(--indigo);
+      color: #fff;
+      padding: 0 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand span {
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    nav {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem;
+      border-bottom: 1px solid var(--cream-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(111, 0, 255, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      max-width: 800px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--indigo);
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--ink-light);
+      max-width: 480px;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.85rem 2.5rem;
+      background-color: var(--indigo);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+
+    .hero-cta:hover {
+      background-color: var(--indigo-dark);
+    }
+
+    /* ── STRIP ── */
+    .strip {
+      background-color: var(--indigo);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .philosophy-text {
+      padding: 6rem 5rem 6rem 4rem;
+      border-right: 1px solid var(--cream-dark);
+    }
+
+    .philosophy-text .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
+    .philosophy-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.75rem;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .philosophy-text p {
+      color: var(--ink-light);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .philosophy-visual {
+      background-color: var(--cream-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+    }
+
+    .weave-symbol {
+      width: 220px;
+      height: 220px;
+      position: relative;
+      opacity: 0.35;
+    }
+
+    .weave-symbol svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── PILLARS ── */
+    .pillars {
+      padding: 5rem 4rem;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .pillars-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .pillars-header .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .pillars-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.25rem;
+      font-weight: 300;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .pillar {
+      text-align: center;
+    }
+
+    .pillar-icon {
+      width: 48px;
+      height: 2px;
+      background-color: var(--indigo);
+      margin: 0 auto 1.5rem;
+    }
+
+    .pillar h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar p {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 1.75;
+    }
+
+    /* ── PRODUCT PREVIEW ── */
+    .products {
+      padding: 5rem 4rem;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .products-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+    }
+
+    .products-header .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .products-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.25rem;
+      font-weight: 300;
+    }
+
+    .products-header a {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      text-decoration: none;
+      border-bottom: 1px solid var(--indigo);
+      padding-bottom: 2px;
+      white-space: nowrap;
+      margin-bottom: 0.4rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .product-card {
+      background-color: var(--cream-dark);
+      aspect-ratio: 3/4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26, 26, 46, 0.55) 0%, transparent 50%);
+    }
+
+    .product-card-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+      opacity: 0.08;
+      color: var(--indigo);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .product-info {
+      position: relative;
+      text-align: center;
+      color: #fff;
+    }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .product-detail {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    /* ── MATERIALS ── */
+    .materials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .materials-visual {
+      background-color: var(--indigo);
+      padding: 5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .materials-visual .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
+    .materials-visual h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .materials-visual h2 em {
+      font-style: italic;
+      opacity: 0.65;
+    }
+
+    .materials-visual p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      line-height: 1.85;
+      max-width: 380px;
+    }
+
+    .materials-specs {
+      padding: 5rem 4rem;
+      border-left: 1px solid var(--cream-dark);
+    }
+
+    .spec-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .spec-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--cream-dark);
+      font-size: 0.88rem;
+    }
+
+    .spec-list li:first-child {
+      border-top: 1px solid var(--cream-dark);
+    }
+
+    .spec-key {
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--ink-light);
+    }
+
+    .spec-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      text-align: right;
+      color: var(--ink);
+    }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      padding: 6rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .quote-section blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink);
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.4;
+    }
+
+    .quote-section cite {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: var(--ink);
+      color: rgba(255,255,255,0.45);
+      padding: 4rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.85);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    footer h4 {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 0.65rem;
+    }
+
+    footer ul li a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    footer ul li a:hover {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-bottom {
+      background-color: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 1.25rem 4rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.2);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header {
+        padding: 0 1.5rem;
+      }
+
+      .brand {
+        font-size: 1.3rem;
+      }
+
+      nav {
+        gap: 1.5rem;
+      }
+
+      .philosophy,
+      .materials {
+        grid-template-columns: 1fr;
+      }
+
+      .philosophy-text,
+      .philosophy-visual,
+      .materials-visual,
+      .materials-specs {
+        padding: 3rem 1.5rem;
+        border-right: none;
+        border-left: none;
+      }
+
+      .pillars {
+        padding: 3rem 1.5rem;
+      }
+
+      .pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .products {
+        padding: 3rem 1.5rem;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!</span><span class="s2">DOCTYPE html</span><span class="s1">&gt;</span><span class="s3"> </span><span class="s1">&lt;</span><span class="s4">html </span><span class="s5">lang</span><span class="s1">="</span><span class="s6">en</span><span class="s1">"&gt;</span><span class="s3"> </span><span class="s1">&lt;</span><span class="s4">head</span><span class="s1">&gt;</span><span class="s3"> </span><span class="s1">&lt;</span><span class="s4">meta </span><span class="s5">charset</span><span class="s1">="</span><span class="s6">UTF-8</span><span class="s1">"&gt;</span><span class="s3"> </span><span class="s1">&lt;</span><span class="s4">meta </span><span class="s5">name</span><span class="s1">="</span><span class="s6">viewport</span><span class="s1">"</span><span class="s4"> </span><span class="s5">content</span><span class="s1">="</span><span class="s6">width=device-width, initial-scale=1.0</span><span class="s1">"&gt;</span><span class="s3"> </span><span class="s1">&lt;</span><span class="s4">title</span><span class="s1">&gt;</span><span class="s3">Telar Índigo</span><span class="s1">&lt;/</span><span class="s4">title</span><span class="s1">&gt;</span><span class="s3"> </span><span class="s1">&lt;</span><span class="s4">style</span><span class="s1">&gt;</span><span class="s3"> </span><span class="s4">body</span><span class="s3"> </span><span class="s1">{</span><span class="s3"> </span><span class="s4">font-family</span><span class="s1">:</span><span class="s3"> Georgia</span><span class="s1">,</span><span class="s3"> serif</span><span class="s1">;</span><span class="s3"> </span><span class="s4">background-color</span><span class="s1">:</span><span class="s3"> #f5f0eb</span><span class="s1">;</span><span class="s3"> </span><span class="s4">color</span><span class="s1">:</span><span class="s3"> #1a1a2e</span><span class="s1">;</span><span class="s3"> </span><span class="s4">max-width</span><span class="s1">:</span><span class="s3"> </span><span class="s7">700</span><span class="s3">px</span><span class="s1">;</span><span class="s3"> </span><span class="s4">margin</span><span class="s1">:</span><span class="s3"> </span><span class="s7">80</span><span class="s3">px auto</span><span class="s1">;</span><span class="s3"> </span><span class="s4">padding</span><span class="s1">:</span><span class="s3"> </span><span class="s7">0</span><span class="s3"> </span><span class="s7">20</span><span class="s3">px</span><span class="s1">;</span><span class="s3"> </span><span class="s1">}</span><span class="s3"> </span><span class="s4">h1</span><span class="s3"> </span><span class="s1">{</span><span class="s3"> </span><span class="s4">font-size</span><span class="s1">:</span><span class="s3"> </span><span class="s7">2.5</span><span class="s3">rem</span><span class="s1">;</span><span class="s3"> </span><span class="s4">letter-spacing</span><span class="s1">:</span><span class="s3"> </span><span class="s7">0.1</span><span class="s3">em</span><span class="s1">;</span><span class="s3"> </span><span class="s4">border-bottom</span><span class="s1">:</span><span class="s3"> </span><span class="s7">2</span><span class="s3">px solid #1a1a2e</span><span class="s1">;</span><span class="s3"> </span><span class="s4">padding-bottom</span><span class="s1">:</span><span class="s3"> </span><span class="s7">10</span><span class="s3">px</span><span class="s1">;</span><span class="s3"> </span><span class="s1">}</span><span class="s3"> </span><span class="s4">p</span><span class="s3"> </span><span class="s1">{</span><span class="s3"> </span><span class="s4">font-size</span><span class="s1">:</span><span class="s3"> </span><span class="s7">1.1</span><span class="s3">rem</span><span class="s1">;</span><span class="s3"> </span><span class="s4">line-height</span><span class="s1">:</span><span class="s3"> </span><span class="s7">1.8</span><span class="s1">;</span><span class="s3"> </span><span class="s4">color</span><span class="s1">:</span><span class="s3"> #444</span><span class="s1">;</span><span class="s3"> </span><span class="s1">}</span><span class="s3"> </span><span class="s1">&lt;/</span><span class="s4">style</span><span class="s1">&gt;</span><span class="s3"> </span><span class="s1">&lt;/</span><span class="s4">head</span><span class="s1">&gt;</span><span class="s3"> </span><span class="s1">&lt;</span><span class="s4">body</span><span class="s1">&gt;</span><span class="s3"> </span><span class="s1">&lt;</span><span class="s4">h1</span><span class="s1">&gt;</span><span class="s3">Telar Índigo</span><span class="s1">&lt;/</span><span class="s4">h1</span><span class="s1">&gt;</span><span class="s3"> </span><span class="s1">&lt;</span><span class="s4">p</span><span class="s1">&gt;</span><span class="s3">Selvedge denim and Japanese repro clothing, coming soon to Mexico City.</span><span class="s1">&lt;/</span><span class="s4">p</span><span class="s1">&gt;</span><span class="s3"> </span><span class="s1">&lt;/</span><span class="s4">body</span><span class="s1">&gt;</span><span class="s3"> </span><span class="s1">&lt;/</span><span class="s4">html</span><span class="s1">&gt;</span></p>
+
+  <!-- HEADER -->
+  <header>
+    <a class="brand" href="#">Telar <span>Índigo</span></a>
+    <nav>
+      <a href="#">About</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-label">Japanese Raw Denim &mdash; Handcrafted in the Old Way</p>
+    <h1>Cloth that earns its<br /><em>character</em> with time</h1>
+    <p>
+      We source selvedge denim from the mills of Kojima and Okayama — woven slow, dyed deep,
+      and cut to outlast every passing trend.
+    </p>
+    <a class="hero-cta" href="#">Explore the Collection</a>
+  </section>
+
+  <!-- ANNOUNCEMENT STRIP -->
+  <div class="strip">
+    Free worldwide shipping on orders over ¥30,000 &nbsp;&bull;&nbsp; New arrivals: Summer 2026 selvedge cuts
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="philosophy-text">
+      <p class="section-label">Our Philosophy</p>
+      <h2>The fabric<br />remembers<br />everything</h2>
+      <p>
+        Raw denim is a living textile. Every crease, fade, and whisker is a record of the life you've lived in it.
+        We believe clothing should be earned, not discarded.
+      </p>
+      <p>
+        Telar Índigo was founded on the conviction that true quality speaks quietly — in the weight of the cloth,
+        the evenness of the selvage edge, the slow bloom of an indigo fade.
+      </p>
+      <p>
+        We work with Japanese mills that have been weaving denim on vintage shuttle looms since the 1960s.
+        No compromise, no shortcuts.
+      </p>
+    </div>
+    <div class="philosophy-visual">
+      <div class="weave-symbol">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- Woven grid pattern representing selvedge weave -->
+          <g fill="none" stroke="#6F00FF" stroke-width="2">
+            <!-- Vertical threads -->
+            <line x1="20"  y1="10" x2="20"  y2="190"/>
+            <line x1="50"  y1="10" x2="50"  y2="190"/>
+            <line x1="80"  y1="10" x2="80"  y2="190"/>
+            <line x1="110" y1="10" x2="110" y2="190"/>
+            <line x1="140" y1="10" x2="140" y2="190"/>
+            <line x1="170" y1="10" x2="170" y2="190"/>
+            <!-- Horizontal threads (over/under warp illusion) -->
+            <line x1="10" y1="20"  x2="35"  y2="20"/>
+            <line x1="65" y1="20"  x2="95"  y2="20"/>
+            <line x1="125" y1="20" x2="155" y2="20"/>
+            <line x1="185" y1="20" x2="190" y2="20"/>
+
+            <line x1="10" y1="50"  x2="35"  y2="50"/>
+            <line x1="65" y1="50"  x2="95"  y2="50"/>
+            <line x1="125" y1="50" x2="155" y2="50"/>
+            <line x1="185" y1="50" x2="190" y2="50"/>
+
+            <line x1="10" y1="80"  x2="35"  y2="80"/>
+            <line x1="65" y1="80"  x2="95"  y2="80"/>
+            <line x1="125" y1="80" x2="155" y2="80"/>
+            <line x1="185" y1="80" x2="190" y2="80"/>
+
+            <line x1="10" y1="110"  x2="35"  y2="110"/>
+            <line x1="65" y1="110"  x2="95"  y2="110"/>
+            <line x1="125" y1="110" x2="155" y2="110"/>
+            <line x1="185" y1="110" x2="190" y2="110"/>
+
+            <line x1="10" y1="140"  x2="35"  y2="140"/>
+            <line x1="65" y1="140"  x2="95"  y2="140"/>
+            <line x1="125" y1="140" x2="155" y2="140"/>
+            <line x1="185" y1="140" x2="190" y2="140"/>
+
+            <line x1="10" y1="170"  x2="35"  y2="170"/>
+            <line x1="65" y1="170"  x2="95"  y2="170"/>
+            <line x1="125" y1="170" x2="155" y2="170"/>
+            <line x1="185" y1="170" x2="190" y2="170"/>
+          </g>
+          <!-- Selvedge edge indicators -->
+          <rect x="10" y="10" width="10" height="180" fill="#6F00FF" opacity="0.15" rx="1"/>
+          <rect x="180" y="10" width="10" height="180" fill="#6F00FF" opacity="0.15" rx="1"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <div class="pillars-header">
+      <p class="section-label">Why Raw Denim</p>
+      <h2>Three reasons the world slows down</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-icon"></div>
+        <h3>Selvedge Weave</h3>
+        <p>
+          Shuttle looms produce a self-finished edge — dense, tightly woven, and impossible to replicate
+          at industrial speed. The selvedge is the signature of intentional craft.
+        </p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"></div>
+        <h3>Natural Indigo</h3>
+        <p>
+          Dyed in the traditional tate-ochi method, our fabrics achieve a depth of colour that synthetic dyes
+          cannot match — and a fade that reveals the white weft beneath like morning light.
+        </p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"></div>
+        <h3>Zero Wash</h3>
+        <p>
+          Sold raw. No pre-washing, no sanforizing. The denim moulds to your body over months,
+          producing fades and creases that are entirely your own.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT PREVIEW -->
+  <section class="products">
+    <div class="products-header">
+      <div>
+        <p class="section-label">The Collection</p>
+        <h2>Current pieces</h2>
+      </div>
+      <a href="#">View all &rarr;</a>
+    </div>
+    <div class="product-grid">
+      <div class="product-card" style="background-color: #2d2d4a;">
+        <div class="product-card-bg">藍</div>
+        <div class="product-info">
+          <p class="product-name">The Kojima 14oz</p>
+          <p class="product-detail">Straight leg &mdash; Selvedge</p>
+        </div>
+      </div>
+      <div class="product-card" style="background-color: #1a2035;">
+        <div class="product-card-bg">糸</div>
+        <div class="product-info">
+          <p class="product-name">The Okayama Slim</p>
+          <p class="product-detail">Tapered cut &mdash; 12.5oz</p>
+        </div>
+      </div>
+      <div class="product-card" style="background-color: #3a2060;">
+        <div class="product-card-bg">布</div>
+        <div class="product-info">
+          <p class="product-name">The Índigo Chore</p>
+          <p class="product-detail">Work jacket &mdash; 11oz</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIALS & SPECS -->
+  <section class="materials">
+    <div class="materials-visual">
+      <p class="section-label">Construction</p>
+      <h2>Woven on<br />vintage shuttle<br /><em>looms since 1968</em></h2>
+      <p>
+        Our mill partners in Bingo Fukuyama operate 1960s Toyoda and Draper looms at half the speed
+        of modern projectile machines — because slower means tighter, denser, and more characterful cloth.
+      </p>
+    </div>
+    <div class="materials-specs">
+      <p class="section-label">Fabric Specification</p>
+      <ul class="spec-list">
+        <li>
+          <span class="spec-key">Origin</span>
+          <span class="spec-value">Bingo Fukuyama, Hiroshima Prefecture</span>
+        </li>
+        <li>
+          <span class="spec-key">Loom Type</span>
+          <span class="spec-value">Vintage shuttle (selvedge)</span>
+        </li>
+        <li>
+          <span class="spec-key">Weight</span>
+          <span class="spec-value">12.5 oz – 14.5 oz (per model)</span>
+        </li>
+        <li>
+          <span class="spec-key">Dye Method</span>
+          <span class="spec-value">Rope-dyed natural indigo</span>
+        </li>
+        <li>
+          <span class="spec-key">Composition</span>
+          <span class="spec-value">100% Zimbabwe cotton</span>
+        </li>
+        <li>
+          <span class="spec-key">Finishing</span>
+          <span class="spec-value">Raw (unsanforized)</span>
+        </li>
+        <li>
+          <span class="spec-key">Selvedge ID</span>
+          <span class="spec-value">White with indigo stripe</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <blockquote>
+      &ldquo;Good denim is not bought — it is inherited from a version of yourself that was patient enough to break it in.&rdquo;
+    </blockquote>
+    <cite>Telar Índigo &mdash; Founding Notes, 2024</cite>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <p class="footer-brand">Telar Índigo</p>
+      <p class="footer-tagline">
+        Japanese selvedge raw denim, sourced from the great mills of Kojima and Okayama.
+        Made to last a lifetime and fade into something irreplaceable.
+      </p>
+    </div>
+    <div>
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#">Collection</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#">Sizing Guide</a></li>
+        <li><a href="#">Care Instructions</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Stockists</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Telar Índigo. All rights reserved.</span>
+    <span>Crafted with care &mdash; Tokyo / Madrid</span>
+  </div>
+
 </body>
 </html>
