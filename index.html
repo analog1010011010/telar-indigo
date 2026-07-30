@@ -50,7 +50,7 @@
     }
 
     .brand img {
-      height: 38px;
+      height: 52px;
       width: auto;
       mix-blend-mode: screen;
       filter: brightness(1.15);
@@ -186,8 +186,8 @@
 
     /* STRIP */
     .strip {
-      background-color: var(--blue);
-      color: rgba(232,244,255,0.65);
+      background-color: #D1D9E5;
+      color: #1a1a3a;
       text-align: center;
       padding: 0.9rem 2rem;
       font-size: 0.67rem;
@@ -352,13 +352,8 @@
     .product-card-bg {
       position: absolute;
       inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 7rem;
-      opacity: 0.1;
-      color: var(--clear);
-      font-family: Georgia, serif;
+      background-size: cover;
+      background-position: center;
     }
 
     .product-info { position: relative; z-index: 2; text-align: center; }
@@ -651,22 +646,22 @@
       <a href="#">View all &rarr;</a>
     </div>
     <div class="product-grid">
-      <div class="product-card" style="background-color: #1a1a3a;">
-        <div class="product-card-bg">藍</div>
+      <div class="product-card">
+        <div class="product-card-bg" style="background-image: url('denim-blue.jpeg');"></div>
         <div class="product-info">
           <p class="product-name">The Kojima 14oz</p>
           <p class="product-detail">Straight leg &mdash; Selvedge</p>
         </div>
       </div>
-      <div class="product-card" style="background-color: #0d1528;">
-        <div class="product-card-bg">糸</div>
+      <div class="product-card">
+        <div class="product-card-bg" style="background-image: url('denim-green.jpeg');"></div>
         <div class="product-info">
           <p class="product-name">The Okayama Slim</p>
           <p class="product-detail">Tapered cut &mdash; 12.5oz</p>
         </div>
       </div>
-      <div class="product-card" style="background-color: #150d2e;">
-        <div class="product-card-bg">布</div>
+      <div class="product-card">
+        <div class="product-card-bg" style="background-image: url('denim-dark.jpeg');"></div>
         <div class="product-info">
           <p class="product-name">The Índigo Chore</p>
           <p class="product-detail">Work jacket &mdash; 11oz</p>
