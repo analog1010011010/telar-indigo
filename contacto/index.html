@@ -6,30 +6,26 @@
   <title>Contact — Telar Índigo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --indigo: #6F00FF;
-      --indigo-dark: #5500cc;
-      --indigo-pale: rgba(111, 0, 255, 0.06);
-      --cream: #f2f1e9;
-      --cream-dark: #e8e6d9;
-      --ink: #1a1a2e;
-      --ink-light: #4a4a5a;
+      --blue:    #2B00FF;
+      --blue-dk: #1f00bb;
+      --clear:   #E8F4FF;
+      --accent:  #C2E81F;
+      --ink:     #0a0a1a;
+      --ink-mid: rgba(232,244,255,0.6);
+      --white:   #ffffff;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--cream);
-      color: var(--ink);
-      font-family: 'Jost', sans-serif;
+      background-color: var(--ink);
+      color: var(--clear);
+      font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 300;
       line-height: 1.7;
       min-height: 100vh;
@@ -37,60 +33,48 @@
       flex-direction: column;
     }
 
-    /* ── HEADER ── */
+    /* HEADER */
     header {
-      background-color: var(--indigo);
-      color: #fff;
-      padding: 0 4rem;
+      background-color: var(--blue);
+      height: 68px;
+      padding: 0 3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 80px;
       position: sticky;
       top: 0;
       z-index: 100;
     }
 
-    .brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #fff;
-      text-decoration: none;
+    .brand img {
+      height: 52px;
+      width: auto;
+      mix-blend-mode: screen;
+      filter: brightness(1.15);
     }
 
-    .brand span {
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    nav {
-      display: flex;
-      gap: 2.5rem;
-      align-items: center;
-    }
+    nav { display: flex; gap: 3rem; align-items: center; }
 
     nav a {
-      color: rgba(255,255,255,0.85);
+      color: var(--clear);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 400;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      transition: color 0.2s;
+      opacity: 0.85;
+      transition: opacity 0.2s;
     }
+    nav a:hover { opacity: 1; }
+    nav a.active { opacity: 1; border-bottom: 1px solid rgba(232,244,255,0.5); padding-bottom: 2px; }
 
-    nav a:hover { color: #fff; }
-    nav a.active { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 2px; }
-
-    /* ── PAGE HERO ── */
+    /* PAGE HERO */
     .page-hero {
-      background-color: var(--indigo);
+      background-color: var(--blue);
       padding: 5rem 4rem 4rem;
       position: relative;
       overflow: hidden;
+      border-bottom: 1px solid rgba(232,244,255,0.07);
     }
 
     .page-hero::after {
@@ -98,84 +82,88 @@
       position: absolute;
       right: 4rem;
       bottom: -1.5rem;
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IBM Plex Sans', sans-serif;
       font-size: 7rem;
+      font-weight: 300;
       color: rgba(255,255,255,0.05);
       letter-spacing: 0.05em;
       white-space: nowrap;
       pointer-events: none;
     }
 
-    .page-hero .section-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.3em;
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 1rem;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
       font-weight: 500;
     }
 
     .page-hero h1 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IBM Plex Sans', sans-serif;
       font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 300;
-      color: #fff;
+      color: var(--white);
       line-height: 1.15;
       max-width: 520px;
+      letter-spacing: 0.02em;
     }
 
     .page-hero h1 em {
       font-style: italic;
-      color: rgba(255,255,255,0.6);
+      color: rgba(232,244,255,0.6);
     }
 
-    /* ── MAIN LAYOUT ── */
+    /* MAIN LAYOUT */
     main {
       flex: 1;
       display: grid;
       grid-template-columns: 5fr 7fr;
+      border-bottom: 1px solid rgba(232,244,255,0.07);
     }
 
-    /* ── LEFT PANEL ── */
+    /* LEFT PANEL */
     .contact-info {
       padding: 5rem 4rem;
-      border-right: 1px solid var(--cream-dark);
+      border-right: 1px solid rgba(232,244,255,0.07);
       display: flex;
       flex-direction: column;
       gap: 3rem;
     }
 
     .info-block .label {
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--indigo);
+      color: var(--accent);
       font-weight: 500;
       margin-bottom: 0.6rem;
     }
 
     .info-block p {
       font-size: 0.9rem;
-      color: var(--ink-light);
+      color: var(--ink-mid);
       line-height: 1.75;
     }
 
     .info-block a {
-      color: var(--ink);
+      color: var(--clear);
       text-decoration: none;
-      border-bottom: 1px solid var(--cream-dark);
+      border-bottom: 1px solid rgba(232,244,255,0.12);
       transition: border-color 0.2s, color 0.2s;
     }
 
     .info-block a:hover {
-      color: var(--indigo);
-      border-color: var(--indigo);
+      color: var(--accent);
+      border-color: var(--accent);
     }
 
     .divider {
       width: 48px;
-      height: 1px;
-      background-color: var(--cream-dark);
+      height: 2px;
+      background-color: var(--accent);
     }
 
     .social-links {
@@ -185,10 +173,10 @@
     }
 
     .social-links a {
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--ink-light);
+      color: var(--ink-mid);
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -205,44 +193,30 @@
       transition: width 0.25s;
     }
 
-    .social-links a:hover {
-      color: var(--indigo);
-    }
-
-    .social-links a:hover::before {
-      width: 36px;
-    }
+    .social-links a:hover { color: var(--accent); }
+    .social-links a:hover::before { width: 36px; }
 
     .response-note {
-      background-color: var(--cream-dark);
+      background-color: rgba(232,244,255,0.04);
       padding: 1.25rem 1.5rem;
-      border-left: 3px solid var(--indigo);
+      border-left: 2px solid var(--accent);
       margin-top: auto;
     }
 
     .response-note p {
       font-size: 0.8rem;
-      color: var(--ink-light);
+      color: var(--ink-mid);
       line-height: 1.65;
     }
 
     .response-note strong {
       font-weight: 500;
-      color: var(--ink);
+      color: var(--clear);
     }
 
-    /* ── FORM PANEL ── */
+    /* FORM PANEL */
     .form-panel {
       padding: 5rem 5rem 5rem 4rem;
-    }
-
-    .form-panel .section-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--indigo);
-      font-weight: 500;
-      margin-bottom: 2.5rem;
     }
 
     form {
@@ -265,64 +239,47 @@
     }
 
     label {
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       font-weight: 500;
-      color: var(--ink-light);
+      color: var(--ink-mid);
       margin-bottom: 0.6rem;
       transition: color 0.2s;
     }
 
-    .field:focus-within label {
-      color: var(--indigo);
-    }
+    .field:focus-within label { color: var(--accent); }
 
     input,
-    select,
     textarea {
       background: transparent;
       border: none;
-      border-bottom: 1px solid var(--cream-dark);
+      border-bottom: 1px solid rgba(232,244,255,0.12);
       padding: 0.6rem 0;
-      font-family: 'Jost', sans-serif;
+      font-family: 'IBM Plex Sans', sans-serif;
       font-size: 0.95rem;
       font-weight: 300;
-      color: var(--ink);
+      color: var(--clear);
       outline: none;
       transition: border-color 0.25s;
       width: 100%;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    select {
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234a4a5a'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0 center;
-      padding-right: 1.5rem;
     }
 
     input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--indigo);
-    }
+    textarea:focus { border-color: var(--accent); }
 
     input::placeholder,
     textarea::placeholder {
-      color: rgba(74, 74, 90, 0.35);
+      color: rgba(232,244,255,0.2);
       font-size: 0.9rem;
     }
 
     textarea {
       resize: none;
-      min-height: 120px;
+      min-height: 140px;
       line-height: 1.7;
     }
 
-    /* Animated underline on focus */
     .field::after {
       content: '';
       position: absolute;
@@ -330,69 +287,13 @@
       left: 0;
       width: 0;
       height: 1px;
-      background-color: var(--indigo);
+      background-color: var(--accent);
       transition: width 0.3s ease;
     }
 
-    .field:focus-within::after {
-      width: 100%;
-    }
+    .field:focus-within::after { width: 100%; }
 
-    /* Override for textarea field — position relative to bottom of textarea */
-    .field.textarea-field::after {
-      bottom: 0;
-    }
-
-    /* ── TOPIC CHIPS ── */
-    .chips-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      font-weight: 500;
-      color: var(--ink-light);
-      margin-bottom: 0.8rem;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .chips input[type="radio"] {
-      display: none;
-    }
-
-    .chips label {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 400;
-      color: var(--ink-light);
-      border: 1px solid var(--cream-dark);
-      padding: 0.45rem 1rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      margin-bottom: 0;
-    }
-
-    .chips input[type="radio"]:checked + label {
-      background-color: var(--indigo);
-      border-color: var(--indigo);
-      color: #fff;
-    }
-
-    .chips label:hover {
-      border-color: var(--indigo);
-      color: var(--indigo);
-    }
-
-    .chips input[type="radio"]:checked + label:hover {
-      color: #fff;
-    }
-
-    /* ── SUBMIT ── */
+    /* SUBMIT */
     .form-footer {
       display: flex;
       align-items: center;
@@ -403,151 +304,121 @@
 
     .form-note {
       font-size: 0.75rem;
-      color: var(--ink-light);
+      color: var(--ink-mid);
       line-height: 1.6;
     }
 
     .btn-submit {
       flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 2.5rem;
-      background-color: var(--indigo);
-      color: #fff;
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--ink);
       border: none;
-      font-family: 'Jost', sans-serif;
+      padding: 1rem 3rem;
+      font-family: 'IBM Plex Sans', sans-serif;
       font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background-color 0.2s, gap 0.25s;
+      transition: background-color 0.2s;
     }
 
-    .btn-submit:hover {
-      background-color: var(--indigo-dark);
-      gap: 1.4rem;
-    }
+    .btn-submit:hover { background-color: #d4f520; }
 
-    .btn-submit svg {
-      width: 14px;
-      height: 14px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* ── SUCCESS STATE (hidden by default) ── */
-    .success-message {
-      display: none;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 2rem;
-      border-left: 3px solid var(--indigo);
-      background-color: rgba(111, 0, 255, 0.04);
-      margin-top: 2rem;
-    }
-
-    .success-message.visible {
-      display: flex;
-    }
-
-    .success-message h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-    }
-
-    .success-message p {
-      font-size: 0.88rem;
-      color: var(--ink-light);
-    }
-
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      background-color: var(--ink);
-      color: rgba(255,255,255,0.45);
-      padding: 3rem 4rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background-color: var(--blue);
+      color: rgba(232,244,255,0.45);
+      padding: 4rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
     }
 
     .footer-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.7);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--clear);
       text-transform: uppercase;
+      margin-bottom: 1rem;
     }
 
-    .footer-copy {
-      font-size: 0.7rem;
+    .footer-tagline { font-size: 0.8rem; line-height: 1.75; max-width: 280px; }
+
+    footer h4 {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(232,244,255,0.28);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 0.65rem; }
+    footer ul li a {
+      color: rgba(232,244,255,0.48);
+      text-decoration: none;
+      font-size: 0.83rem;
+      transition: color 0.2s;
+    }
+    footer ul li a:hover { color: var(--clear); }
+
+    .footer-bottom {
+      background-color: var(--blue);
+      border-top: 1px solid rgba(232,244,255,0.07);
+      padding: 1.25rem 4rem;
+      font-size: 0.65rem;
       letter-spacing: 0.1em;
+      color: rgba(232,244,255,0.2);
+      display: flex;
+      justify-content: space-between;
     }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       header { padding: 0 1.5rem; }
-
+      nav { gap: 1.5rem; }
       .page-hero { padding: 3rem 1.5rem 2.5rem; }
       .page-hero::after { display: none; }
-
       main { grid-template-columns: 1fr; }
-
-      .contact-info {
-        padding: 3rem 1.5rem;
-        border-right: none;
-        border-bottom: 1px solid var(--cream-dark);
-      }
-
+      .contact-info { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid rgba(232,244,255,0.07); }
       .form-panel { padding: 3rem 1.5rem; }
-
       .form-row { grid-template-columns: 1fr; gap: 0; }
-
       .form-footer { flex-direction: column; align-items: flex-start; }
-
-      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
-    }
-
-    @media (max-width: 480px) {
-      .brand { font-size: 1.3rem; }
-      nav { gap: 1.25rem; }
+      footer { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2rem; }
+      .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; gap: 0.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
-    <a class="brand" href="index.html">Telar <span>Índigo</span></a>
+    <a class="brand" href="/">
+      <img src="../logo.jpg" alt="Telar Índigo" />
+    </a>
     <nav>
       <a href="#">About</a>
       <a href="#">Blog</a>
-      <a href="contact.html" class="active">Contact</a>
+      <a href="/contacto" class="active">Contact</a>
     </nav>
   </header>
 
-  <!-- PAGE HERO -->
   <div class="page-hero">
     <p class="section-label">Get in touch</p>
     <h1>We'd love to<br />hear from <em>you.</em></h1>
   </div>
 
-  <!-- MAIN -->
   <main>
 
-    <!-- LEFT: INFO -->
     <aside class="contact-info">
 
       <div class="info-block">
         <p class="label">Email</p>
-        <p><a href="#">hello@telarindigo.com</a></p>
+        <p><a href="mailto:iamthewoodendoors@gmail.com">iamthewoodendoors@gmail.com</a></p>
       </div>
 
       <div class="divider"></div>
@@ -555,9 +426,8 @@
       <div class="info-block">
         <p class="label">Showroom</p>
         <p>
-          Calle del Pez, 27<br />
-          Madrid, 28004<br />
-          Spain
+          Ciudad de México<br />
+          México
         </p>
       </div>
 
@@ -593,13 +463,11 @@
 
     </aside>
 
-    <!-- RIGHT: FORM -->
     <section class="form-panel">
       <p class="section-label">Send us a message</p>
 
-      <form id="contactForm" novalidate>
+      <form target="_blank" action="https://formsubmit.co/iamthewoodendoors@gmail.com" method="POST">
 
-        <!-- Name / Email -->
         <div class="form-row">
           <div class="field">
             <label for="name">Full Name</label>
@@ -611,60 +479,16 @@
           </div>
         </div>
 
-        <!-- Subject -->
-        <div class="field">
-          <label for="subject">Subject</label>
-          <select id="subject" name="subject">
-            <option value="" disabled selected>Select a topic…</option>
-            <option value="order">Order inquiry</option>
-            <option value="sizing">Sizing & fit advice</option>
-            <option value="wholesale">Wholesale & stockists</option>
-            <option value="care">Denim care & repairs</option>
-            <option value="collab">Collaboration proposal</option>
-            <option value="other">Something else</option>
-          </select>
-        </div>
-
-        <!-- Topic chips -->
-        <div>
-          <p class="chips-label">What best describes you?</p>
-          <div class="chips">
-            <input type="radio" id="chip-new" name="customer_type" value="new" />
-            <label for="chip-new">New customer</label>
-
-            <input type="radio" id="chip-returning" name="customer_type" value="returning" />
-            <label for="chip-returning">Returning customer</label>
-
-            <input type="radio" id="chip-wholesale" name="customer_type" value="wholesale" />
-            <label for="chip-wholesale">Wholesale buyer</label>
-
-            <input type="radio" id="chip-press" name="customer_type" value="press" />
-            <label for="chip-press">Press / media</label>
-          </div>
-        </div>
-
-        <!-- Message -->
-        <div class="field textarea-field">
+        <div class="field" style="margin-bottom: 2.5rem;">
           <label for="message">Your Message</label>
-          <textarea id="message" name="message" placeholder="Tell us what's on your mind…" required></textarea>
+          <textarea id="message" name="message" placeholder="Tell us what's on your mind…" rows="6" required></textarea>
         </div>
 
-        <!-- Submit row -->
         <div class="form-footer">
           <p class="form-note">
-            Your information is never shared with third parties.<br />
-            Read our <a href="#" style="color:var(--indigo);text-decoration:none;border-bottom:1px solid var(--indigo);">privacy policy</a>.
+            Your information is never shared with third parties.
           </p>
-          <button class="btn-submit" type="submit">
-            Send message
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        </div>
-
-        <!-- Success message -->
-        <div class="success-message" id="successMsg">
-          <h3>Message received.</h3>
-          <p>Thank you for reaching out. We'll be in touch within one or two business days.</p>
+          <button class="btn-submit" type="submit">Send Message</button>
         </div>
 
       </form>
@@ -672,39 +496,34 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
-    <p class="footer-brand">Telar Índigo</p>
-    <p class="footer-copy">&copy; 2026 Telar Índigo. All rights reserved.</p>
+    <div>
+      <p class="footer-brand">Telar Índigo</p>
+      <p class="footer-tagline">Japanese selvedge raw denim, sourced from the great mills of Kojima and Okayama. Made to last a lifetime and fade into something irreplaceable.</p>
+    </div>
+    <div>
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="/">Collection</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="/contacto">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#">Sizing Guide</a></li>
+        <li><a href="#">Care Instructions</a></li>
+        <li><a href="#">Shipping &amp; Returns</a></li>
+        <li><a href="#">Stockists</a></li>
+      </ul>
+    </div>
   </footer>
-
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const name    = document.getElementById('name').value.trim();
-      const email   = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      if (!name || !email || !message) {
-        const first = [
-          !name    && document.getElementById('name'),
-          !email   && document.getElementById('email'),
-          !message && document.getElementById('message'),
-        ].find(Boolean);
-        if (first) first.focus();
-        return;
-      }
-
-      // Hide the form fields and show the success message
-      this.querySelectorAll('.form-row, .field, .chips-label, .chips, .form-footer').forEach(el => {
-        el.style.opacity = '0.3';
-        el.style.pointerEvents = 'none';
-      });
-
-      document.getElementById('successMsg').classList.add('visible');
-      document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-  </script>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Telar Índigo. All rights reserved.</span>
+    <span>Ciudad de México</span>
+  </div>
 
 </body>
 </html>
